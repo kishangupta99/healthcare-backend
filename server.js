@@ -11,7 +11,7 @@ const server = app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
 });
 
-// Handle graceful shutdown
+
 const gracefulShutdown = () => {
   console.log('Received shutdown signal, closing server gracefully...');
   server.close(() => {

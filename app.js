@@ -11,12 +11,16 @@ const errorHandler = require('./middleware/error.middleware');
 
 const app = express();
 
-// Security Middleware
+
+
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// Rate Limiting for Auth endpoints
+
+
+
+
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 20, // limit each IP to 20 requests per windowMs
@@ -24,21 +28,29 @@ const authLimiter = rateLimit({
 });
 app.use('/api/auth', authLimiter);
 
-// API Routes
+
+
+
+
 app.use('/api/auth', authRoutes);
 app.use('/api/patients', patientRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/mappings', mappingRoutes);
 
-// Root route
+
+
 app.get('/', (req, res) => {
   res.status(200).json({ success: true, message: 'Healthcare Backend API is running' });
 });
+
+
 
 // 404 handler
 app.use((req, res, next) => {
   res.status(404).json({ success: false, message: 'Endpoint not found' });
 });
+
+
 
 // Centralized Error Handler
 app.use(errorHandler);

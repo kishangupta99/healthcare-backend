@@ -1,8 +1,7 @@
 const Doctor = require('../models/Doctor');
 
-// @desc    Create a doctor
-// @route   POST /api/doctors
-// @access  Private
+
+
 exports.createDoctor = async (req, res, next) => {
   try {
     const { name, specialization, contactInfo } = req.body;
@@ -23,9 +22,10 @@ exports.createDoctor = async (req, res, next) => {
   }
 };
 
-// @desc    Get all doctors
-// @route   GET /api/doctors
-// @access  Public / Authenticated
+
+
+
+
 exports.getDoctors = async (req, res, next) => {
   try {
     const doctors = await Doctor.find({});
@@ -39,9 +39,11 @@ exports.getDoctors = async (req, res, next) => {
   }
 };
 
-// @desc    Get specific doctor
-// @route   GET /api/doctors/:id
-// @access  Public / Authenticated
+
+
+
+
+
 exports.getDoctorById = async (req, res, next) => {
   try {
     const doctor = await Doctor.findById(req.params.id);
@@ -59,9 +61,11 @@ exports.getDoctorById = async (req, res, next) => {
   }
 };
 
-// @desc    Update doctor
-// @route   PUT /api/doctors/:id
-// @access  Private
+
+
+
+
+
 exports.updateDoctor = async (req, res, next) => {
   try {
     let doctor = await Doctor.findById(req.params.id);
@@ -85,9 +89,10 @@ exports.updateDoctor = async (req, res, next) => {
   }
 };
 
-// @desc    Delete doctor
-// @route   DELETE /api/doctors/:id
-// @access  Private
+
+
+
+
 exports.deleteDoctor = async (req, res, next) => {
   try {
     const doctor = await Doctor.findById(req.params.id);

@@ -1,8 +1,8 @@
 const Patient = require('../models/Patient');
 
-// @desc    Create a patient
-// @route   POST /api/patients
-// @access  Private
+
+
+
 exports.createPatient = async (req, res, next) => {
   try {
     const { name, age, gender, contactInfo, address } = req.body;
@@ -26,9 +26,9 @@ exports.createPatient = async (req, res, next) => {
   }
 };
 
-// @desc    Get all patients for logged in user
-// @route   GET /api/patients
-// @access  Private
+
+
+
 exports.getPatients = async (req, res, next) => {
   try {
     const patients = await Patient.find({ createdBy: req.user._id });
@@ -42,9 +42,9 @@ exports.getPatients = async (req, res, next) => {
   }
 };
 
-// @desc    Get specific patient
-// @route   GET /api/patients/:id
-// @access  Private
+
+
+
 exports.getPatientById = async (req, res, next) => {
   try {
     const patient = await Patient.findOne({
@@ -65,9 +65,9 @@ exports.getPatientById = async (req, res, next) => {
   }
 };
 
-// @desc    Update patient
-// @route   PUT /api/patients/:id
-// @access  Private
+
+
+
 exports.updatePatient = async (req, res, next) => {
   try {
     let patient = await Patient.findOne({
@@ -94,9 +94,9 @@ exports.updatePatient = async (req, res, next) => {
   }
 };
 
-// @desc    Delete patient
-// @route   DELETE /api/patients/:id
-// @access  Private
+
+
+
 exports.deletePatient = async (req, res, next) => {
   try {
     const patient = await Patient.findOne({

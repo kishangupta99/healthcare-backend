@@ -2,9 +2,10 @@ const PatientDoctorMapping = require('../models/PatientDoctorMapping');
 const Patient = require('../models/Patient');
 const Doctor = require('../models/Doctor');
 
-// @desc    Assign a doctor to a patient
-// @route   POST /api/mappings
-// @access  Private
+
+
+
+
 exports.createMapping = async (req, res, next) => {
   try {
     const { patient: patientId, doctor: doctorId } = req.body;
@@ -27,6 +28,8 @@ exports.createMapping = async (req, res, next) => {
     if (!doctor) {
       return res.status(404).json({ success: false, message: 'Doctor not found' });
     }
+
+
 
     // Check for existing mapping conflict
     const existingMapping = await PatientDoctorMapping.findOne({
@@ -60,9 +63,10 @@ exports.createMapping = async (req, res, next) => {
   }
 };
 
-// @desc    Retrieve all mappings belonging to patients owned by the user
-// @route   GET /api/mappings
-// @access  Private
+
+
+
+
 exports.getMappings = async (req, res, next) => {
   try {
     // Find all patient IDs owned by the authenticated user
@@ -83,9 +87,9 @@ exports.getMappings = async (req, res, next) => {
   }
 };
 
-// @desc    Get all doctors assigned to a specific patient
-// @route   GET /api/mappings/:patientId
-// @access  Private
+
+
+
 exports.getDoctorsByPatient = async (req, res, next) => {
   try {
     const { patientId } = req.params;
@@ -114,9 +118,9 @@ exports.getDoctorsByPatient = async (req, res, next) => {
   }
 };
 
-// @desc    Remove a doctor assignment
-// @route   DELETE /api/mappings/:id
-// @access  Private
+
+
+
 exports.deleteMapping = async (req, res, next) => {
   try {
     const mapping = await PatientDoctorMapping.findById(req.params.id);
