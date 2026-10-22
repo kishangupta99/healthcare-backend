@@ -36,6 +36,40 @@ A robust, secure backend system for a healthcare application built using Node.js
    npm install
 
 
+Configure environment variables:
+Copy .env.example to .env and fill in your configuration:
 
+Bash
+cp .env.example .env
+
+
+Start the application:
+
+Development mode (with nodemon):
+
+Bash
+npm run dev
+Production mode:
+
+Bash
+npm start
+Running Tests
+Run the Jest automated test suite:
+
+Bash
+npm test
+
+---
+
+### Step 8 & 9: Code Review & Final Checklist
+
+* **Authentication & Authorization:** Implemented with JWT and route-level protection middleware. Users can only modify their own patients and mappings.
+* **All Endpoints Preserved:**
+  * Auth: `/api/auth/register`, `/api/auth/login`
+  * Patients: `POST`, `GET`, `GET /:id`, `PUT /:id`, `DELETE /:id`
+  * Doctors: `POST`, `GET`, `GET /:id`, `PUT /:id`, `DELETE /:id`
+  * Mappings: `POST`, `GET`, `GET /:patientId`, `DELETE /:id`
+* **Data Integrity & Validation:** Request bodies are validated using `express-validator`, ObjectIds are validated, and unique compound indexes prevent duplicate assignments.
+* **No Python/Django/PostgreSQL:** Completely written in JavaScript using Node.js, Express, and MongoDB.
 
    
